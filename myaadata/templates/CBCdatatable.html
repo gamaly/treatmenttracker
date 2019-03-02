@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<a href="{% url 'cbc_new' %}" class="btn btn-primary">Add Data</a>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Date</th>
+        <th scope="col">HCT (%)</th>
+        <th scope="col">Hgb (g/dL)</th>
+        <th scope="col">MCV (fL)</th>
+        <th scope="col">NRBC (X/100WC)</th>
+        <th scope="col">Platelets (K/uL)</th>
+        <th scope="col">RBCs (M/uL)</th>
+        <th scope="col">RDW, RBC (%)</th>
+        <th scrope="col">WBC (K/uL)</th>
+        <th scrope="col">Manage</th>
+
+      </tr>
+    </thead>
+    <tbody>
+{% for CBCresults in object_list|dictsort:"date"  %}
+      <tr>        
+        <td>{{ CBCresults.date }}</td>
+        <td>{{ CBCresults.HCT_percent }}</td>
+        <td>{{ CBCresults.Hgb }}</td>
+        <td>{{ CBCresults.MCV }}</td>
+        <td>{{ CBCresults.NRBC }}</td>
+        <td>{{ CBCresults.Platelets }}</td>
+        <td>{{ CBCresults.RBCs }}</td>
+        <td>{{ CBCresults.RDW_RBC_percent }}</td>
+        <td>{{ CBCresults.WBC }}</td>
+        <td><a class="btn btn-warning m-1" href="{% url 'cbc_edit' CBCresults.pk %}">Edit</a></td>
+      </tr>
+      {% endfor %}
+
+    </tbody>
+  </table>
+
+<p></p>
+
+
+
+{% endblock content %}

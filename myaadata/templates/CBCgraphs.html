@@ -1,0 +1,125 @@
+{% extends 'base.html' %} 
+{% block content %}
+ <style>
+.graph { 
+    height: 400px;
+  }
+</style>
+
+<head>
+    <!-- Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+</head>
+<body>
+
+    <div id="WBCGraph" class="graph"></div>
+    <div id="RBCGraph" class="graph"></div>
+    <div id="NRBCGraph" class="graph"></div>
+
+
+</body>
+<script>
+
+// Data
+    date = [{% for i in date %} '{{ i|date:'Y-m-d' }}', {%endfor%}]
+    wbc_count = [{% for i in WBC %} {{ i }}, {%endfor%}]
+    rbc_count = [{% for i in RBC %} {{ i }}, {%endfor%}]
+    nrbc_count = [{% for i in NRBC %} {{ i }}, {%endfor%}]
+
+// WBC Graph
+        var WBC_Trace = {
+            x: date,
+            y: wbc_count,
+            type: 'scatter'
+        };
+
+        var WBCdata = [WBC_Trace];
+        
+        var WBClayout = {
+            title: 'WBC Counts',
+            xaxis: {
+                type: 'date',
+                showgrid: false,
+                zeroline: false,
+                range: ['2019-02-1', '2019-04-1'],
+                rangeselector: {buttons: [
+                    {
+                    count: 1,
+                    label: '1m',
+                    step: 'month',
+                    stepmode: 'backward'
+                    },
+                    {
+                    count: 6,
+                    label: '6m',
+                    step: 'month',
+                    stepmode: 'backward'
+                    },
+                    {step: 'all'}
+                ]},
+                rangeslider: {range: ['2019-02-1', '2019-04-1']},
+                type: 'date'
+  
+                
+            },
+            yaxis: {
+                autorange: true,
+                title: 'Counts (K/uL)',
+                showline: false
+            }
+        };
+
+        Plotly.newPlot('WBCGraph', WBCdata, WBClayout);
+
+        // NEW RBC Graph
+        var RBC_Trace = {
+            x: date,
+            y: rbc_count,
+            type: 'scatter'
+        };
+
+        var RBCdata = [RBC_Trace];
+        
+        var RBClayout = {
+            title: 'RBC Counts',
+            xaxis: {
+                title: 'Dates',
+                showgrid: false,
+                zeroline: false
+            },
+            yaxis: {
+                title: 'Counts (K/uL)',
+                showline: false
+            }
+        };
+
+        Plotly.newPlot('RBCGraph', RBCdata, RBClayout);
+
+            // NEW NRBC Graph
+            var NRBC_Trace = {
+            x: date,
+            y: nrbc_count,
+            type: 'scatter'
+        };
+
+        var NRBCdata = [NRBC_Trace];
+        
+        var NRBClayout = {
+            title: 'NRBC Counts',
+            xaxis: {
+                title: 'Dates',
+                showgrid: false,
+                zeroline: false
+            },
+            yaxis: {
+                title: 'Counts (K/uL)',
+                showline: false
+            }
+        };
+
+        Plotly.newPlot('NRBCGraph', NRBCdata, NRBClayout);
+    </script>
+    
+    
+{% endblock content %}
