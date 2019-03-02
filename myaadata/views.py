@@ -3,13 +3,16 @@ from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins     import LoginRequiredMixin
+
 from . models import CBCresults, WBCdifferential
 from .forms                         import CBCform
 import pandas as pd
 
 # Create your views here.
 
-class CBCListView(ListView):
+class CBCListView(LoginRequiredMixin, ListView):
     model = CBCresults
     date = CBCresults.objects.all().order_by('date')
     template_name = "CBCdatatable.html"
@@ -23,8 +26,7 @@ def CBCGraphView(request):
     return render(request, 'CBCgraphs.html', 
         {'date': date, 'WBC':WBC, 'RBC':RBC, 'NRBC':NRBC})
 
-
-class CBCCreateView(CreateView):
+class CBCCreateView(LoginRequiredMixin, CreateView):
     model = CBCresults
     template_name = 'cbc_new.html'
     fields = '__all__'
