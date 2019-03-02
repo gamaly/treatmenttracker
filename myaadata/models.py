@@ -5,6 +5,7 @@ from django.urls import reverse
 
 class CBCresults(models.Model):
     date = models.DateField(auto_now=False)
+    user = models.CharField(max_length=50)
     HCT_percent = models.DecimalField(max_digits=4, decimal_places=2)
     Hgb = models.DecimalField(max_digits=4, decimal_places=2)
     MCV = models.DecimalField(max_digits=4, decimal_places=2)
