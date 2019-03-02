@@ -1,0 +1,23 @@
+<!-- templates/update_profile.html -->
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block title %}Update Profile{% endblock %}
+
+{% block content %}
+ <div class="container">
+  <h2>Update Profile</h2>
+  
+  <form method="post">
+
+    {% csrf_token %}
+    {% bootstrap_field form.username %}
+    {% bootstrap_field form.email %}
+    {% bootstrap_field form.password1 %}
+    {% bootstrap_field form.password2 %}
+    
+    <button class="btn-primary" type="submit">Sign up</button>
+  </form>
+</div>
+
+{% endblock %}

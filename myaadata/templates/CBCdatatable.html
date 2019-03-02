@@ -30,7 +30,7 @@
         <td>{{ CBCresults.RBCs }}</td>
         <td>{{ CBCresults.RDW_RBC_percent }}</td>
         <td>{{ CBCresults.WBC }}</td>
-        <td><a class="btn btn-warning m-1" href="{% url 'cbc_edit' CBCresults.pk %}">Edit</a></td>
+        <td><a class="btn btn-warning m-1" href="{% url 'cbc_edit' CBCresults.pk %}">Edit</a><a class="btn btn-danger m-1" href="{% url 'cbc_delete' CBCresults.pk %}">Delete</a></td>
       </tr>
       {% endfor %}
 

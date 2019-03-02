@@ -1,0 +1,106 @@
+<!-- templates/signup.html -->
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block title %}<title>Sign Up</title>{% endblock %}
+
+{% block content %}
+ <div class="container border shadow-lg mt-5">
+   <br>
+  <h4 align="center" style="color:black" class="mb-5">Create New Account</h4> 
+{% comment %}     {{form.errors}} {% endcomment %}
+
+<div class="row justify-content-center m-2">
+<h5>Please complete the user signup form below. After successful completion of the form, you will receive an email
+at the email address you entered. Please make sure you have access to this email. Please only register one user 
+per applicant organization. Each organization may submit multiple concept note applications.</h5>
+</div>
+  <form method="post">
+
+    {% csrf_token %}
+
+    <div class="card m-2 bg-light shadow mt-4">
+      <div class="row m-2 mb-2">
+        <div class="col-6"> {% bootstrap_field form.username set_placeholder=False %} </div>  
+        <div class="col-6">{{form.email.errors}}{{form.email.label_tag}}<input type="email" name="email" maxlength="254" class="form-control" title="" id="id_email" required placeholder="Required for account verification"></div>{% comment %} <div class="col-4">{% bootstrap_field form.email set_placeholder=False %}</div> {% endcomment %}
+      </div>
+     
+       <div class="row m-2 mb-2">
+            <div class="col-6">   {% bootstrap_field form.password1 set_placeholder=False %}</div>
+            <div class="col-6">   {% bootstrap_field form.password2 set_placeholder=False %}</div>
+          </div>
+          </div>
+
+    <div class="card m-2 bg-light shadow">
+      <h6 style="color:black" class="p-2">Company Information</h6>
+          <div class="row m-2 mb-2">
+            <div class="col-6">{% bootstrap_field form.companyname set_placeholder=False %}</div>
+            <div class="col-6">{% bootstrap_field form.companypoc set_placeholder=False %}</div>
+          
+            <div class="col-4">{% bootstrap_field form.orgdirector set_placeholder=False %}</div>
+            <div class="col-4">{% bootstrap_field form.orgtype set_placeholder=False %}</div>
+            <div class="col-4">{% bootstrap_field form.location set_placeholder=False %}</div>
+            <div class="col-4">{% bootstrap_field form.companyurl set_placeholder=False %}</div>
+            
+            <div class="col-4">{% bootstrap_field form.vat set_placeholder=False %}</div>
+            <div class="col-4">{% bootstrap_field form.tele set_placeholder=False %}</div>
+            <div class="col-4">{% bootstrap_field form.fax set_placeholder=False %}</div>
+          </div>
+          </div>
+          
+        
+            <div class="card m-2 bg-light shadow mt-4">
+                <h6 style="color:black" class="p-2">Official Address</h6>
+                <div class="row m-2 mb-2">
+              <div class="col-6">{% bootstrap_field form.offaddr set_placeholder=False %}</div>
+              <div class="col-6">{% bootstrap_field form.offaddr2 set_placeholder=False %}</div>
+               <div class="col-6">{% bootstrap_field form.offcity set_placeholder=False %}</div>
+                <div class="col-6">{% bootstrap_field form.offcountry set_placeholder=False %}</div>
+                </div>
+            </div> 
+            <div class="card m-2 bg-light shadow mt-4">
+                <h6 style="color:black" class="p-2">Postal Address (if different from official)</h6>
+                <div class="form-check ml-4">
+                  <input class="form-check-input" type="checkbox" value="" id="address_sync">
+                  <label class="form-check-label" for="address_sync">
+                    Same as Official Address
+                  </label>
+
+              </div>
+            <div class="row m-2 mb-2" id="postRow">
+              <div class="col-6">{% bootstrap_field form.postaddr set_placeholder=False %}</div>
+              <div class="col-6">{% bootstrap_field form.postaddr2 set_placeholder=False %}</div>
+               <div class="col-6">{% bootstrap_field form.postcity set_placeholder=False %}</div>
+                <div class="col-6">{% bootstrap_field form.postcountry set_placeholder=False %}</div>
+                </div>
+            </div> 
+            
+   <div class="row justify-content-end"> <button class="btn btn-primary m-4 grow shadow" type="submit" value="login">Sign up</button></div>
+    
+  </form>
+</div>
+<br>
+<script>
+
+
+
+$('input#address_sync').click(function(){
+  if($(this).is(':checked'))
+  {
+    $('#id_postaddr').val( $('#id_offaddr').val() );
+    $('#id_postaddr2').val( $('#id_offaddr2').val() )
+    $('#id_postcity').val( $('#id_offcity').val() )
+    $('#id_postcountry').val( $('#id_offcountry').val())
+   //$('#postRow').fadeOut(1000)
+   
+  } else {
+    $('#id_postaddr').val( $('#id_offaddr').val() );
+    $('#id_postaddr2').val( $('#id_offaddr2').val() )
+    $('#id_postcity').val( $('#id_offcity').val() )
+    $('#id_postcountry').val( $('#id_offcountry').val())
+    //$('#postRow').fadeIn(1000)
+   
+  }
+})
+</script>
+{% endblock %}

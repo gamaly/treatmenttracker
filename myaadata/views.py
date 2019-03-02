@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.views.generic import ListView
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
+
 from . models import CBCresults, WBCdifferential
 from .forms                         import CBCform
 import pandas as pd
@@ -32,10 +34,17 @@ class CBCUpdateView(UpdateView):
     fields = '__all__'
     template_name = 'cbc_edit.html'
 
+class BlogDeleteView(DeleteView):
+    model = CBCresults
+    template_name = 'cbc_delete.html'
+    success_url = reverse_lazy('home')
+
 class WBCDifferentialCreateView(CreateView):
     model = WBCdifferential
     template_name = 'wbc_diff_new.html'
     fields = '__all__'
+
+
 
 
 # def CBCCreateView(request):

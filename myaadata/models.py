@@ -5,14 +5,14 @@ from django.urls import reverse
 
 class CBCresults(models.Model):
     date = models.DateField(auto_now=False)
-    HCT_percent = models.DecimalField(max_digits=2, decimal_places=2)
-    Hgb = models.DecimalField(max_digits=2, decimal_places=2)
-    MCV = models.DecimalField(max_digits=2, decimal_places=2)
-    NRBC = models.IntegerField()
-    Platelets = models.DecimalField(max_digits=2, decimal_places=2)
-    RBCs = models.DecimalField(max_digits=2, decimal_places=2)
-    RDW_RBC_percent = models.DecimalField(max_digits=2, decimal_places=2)
-    WBC = models.DecimalField(max_digits=2, decimal_places=2)
+    HCT_percent = models.DecimalField(max_digits=4, decimal_places=2)
+    Hgb = models.DecimalField(max_digits=4, decimal_places=2)
+    MCV = models.DecimalField(max_digits=4, decimal_places=2)
+    NRBC = models.DecimalField(max_digits=5, decimal_places=2)
+    Platelets = models.IntegerField()
+    RBCs = models.DecimalField(max_digits=4, decimal_places=2)
+    RDW_RBC_percent = models.DecimalField(max_digits=4, decimal_places=2)
+    WBC = models.DecimalField(max_digits=4, decimal_places=2)
 
     def get_absolute_url(self ):
         return reverse('cbcresultslist')

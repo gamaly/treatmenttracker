@@ -22,6 +22,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 't$9ez62o4&0r&#@y4swyd(gcgmcjl-o4=e)t#ss$4x$gje2ytl'
 
+
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -38,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bootstrap4',
+    'accounts',
     'myaadata',
 ]
 
@@ -124,3 +127,7 @@ STATIC_ROOT = os.path .join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [os .path .join(BASE_DIR, 'static')]
+
+
+
+LOGIN_REDIRECT_URL = 'home'

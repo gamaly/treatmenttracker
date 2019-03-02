@@ -1,0 +1,35 @@
+<!-- templates/signup.html -->
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block title %}<title>Activation Email Sent</title>{% endblock %}
+
+{% block content %}
+<script>
+  setTimeout(function () {
+      window.location.href = "{% url 'login'%}"; 
+   }, 5000); 
+   </script>
+   
+ <div class="container border rounded mt-5">
+   <br>
+  <h2 style="color:black" align="center">Account Verification</h2> 
+    
+
+    <div class="row justify-content-center">
+      <div class="col text-center mt-5">  <h5 style="color:black">{{response}}</h5> </div>
+        
+    </div>
+    <div class="row justify-content-center">
+    <div style="color:black" class="col text-center mt-5"><h5 style="color:black">You will now be redirected to the login page.</h5> </div>
+      
+  </div>
+      
+   
+                        
+<br>
+  
+</div>
+<br>
+
+{% endblock %}
