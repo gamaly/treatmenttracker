@@ -78,12 +78,25 @@ WSGI_APPLICATION = 'treatmenttracker.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
+# Production 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd5qr68pejrsjoe',
+        'USER': 'dqiopylundcxft',
+        'PASSWORD': 'fb061c1228c8bd6f0935452f0d10665f111ac05e2d499bed7df4fa03b2b7f58d',
+        'HOST': 'ec2-107-20-167-11.compute-1.amazonaws.com',
+        'PORT': '',
     }
 }
+
+# Local
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 
 # Password validation

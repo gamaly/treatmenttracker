@@ -49,26 +49,3 @@ class WBCDifferentialCreateView(CreateView):
     model = WBCdifferential
     template_name = 'wbc_diff_new.html'
     fields = '__all__'
-
-
-
-
-# def CBCCreateView(request):
-#     form = CBCform(request.POST)
-    
-#     if request.method == 'POST':
-#         form = CBCform(request.POST)
-#         if form.is_valid():
-#             temp = form.save(commit=False)
-#             #profile.applyFor = form.cleaned_data.get('applyFor') ###
-#             #profile.orgTheme = form.cleaned_data.get('orgTheme') ###
-#             #profile.save()
-#             temp.save()
-#             return redirect(reverse('cbcresultslist', kwargs={"pk": temp.pk}))
-#     else:
-#         form = CBCform()
-
-#     CBC=CBCresults.objects.all()
-    
-#     return render(request, 'cbc_new.html', {'form': form,'CBC':CBC})
-    
