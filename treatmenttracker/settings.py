@@ -10,7 +10,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 't$9ez62o4&0r&#@y4swyd(gcgmcjl-o4=e)t#ss$4x$gje2ytl'
+SECRET_KEY = os.environ.get('TREATMENTTRACKER_SECRET_KEY')
+
 
 
 
@@ -137,7 +138,7 @@ USE_TZ = True
 
 ################# Email Recovery Settings #################
 EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
-SENDGRID_API_KEY = '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'
+SENDGRID_API_KEY = os.path.join('TREATMENTTRACKER_SENGRID_KEY')
 SENDGRID_SANDBOX_MODE_IN_DEBUG = False
 EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
 ADMINS = [('Greg', 'gamaly@gmail.com'),] 
