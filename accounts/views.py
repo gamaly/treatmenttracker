@@ -6,6 +6,7 @@ from accounts.forms import SignUpForm
 from django.contrib.auth import login, authenticate
 from django.utils.translation import gettext
 from django.utils.translation       import gettext_lazy as _
+from django.contrib.auth.models     import User, Group
 
 
 # E-mail management
