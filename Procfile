@@ -1,1 +1,1 @@
-web: gunicorn myaadata.wsgi
+web: gunicorn treatmenttracker.wsgi
