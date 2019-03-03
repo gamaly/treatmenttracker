@@ -27,7 +27,7 @@ SECRET_KEY = 't$9ez62o4&0r&#@y4swyd(gcgmcjl-o4=e)t#ss$4x$gje2ytl'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['treatmenttracker-dev.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['treatmenttracker-dev.herokuapp.com', '127.0.0.1', 'www.treatmenttracker.io', 'treatmenttracker.io']
 
 
 # Application definition
