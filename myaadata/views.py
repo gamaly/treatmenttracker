@@ -8,7 +8,6 @@ from django.contrib.auth.mixins     import LoginRequiredMixin
 
 from . models import CBCresults, WBCdifferential
 from .forms                         import CBCform
-import pandas as pd
 
 # Create your views here.
 

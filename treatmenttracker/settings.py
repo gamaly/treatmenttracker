@@ -83,11 +83,11 @@ WSGI_APPLICATION = 'treatmenttracker.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd5qr68pejrsjoe',
-        'USER': 'dqiopylundcxft',
-        'PASSWORD': 'fb061c1228c8bd6f0935452f0d10665f111ac05e2d499bed7df4fa03b2b7f58d',
-        'HOST': 'ec2-107-20-167-11.compute-1.amazonaws.com',
-        'PORT': '',
+        'NAME': os.environ.get('TREATMENTTRACKER_DB_NAME'),
+        'USER': os.environ.get('TREATMENTTRACKER_DB_USER'),
+        'PASSWORD': os.environ.get('TREATMENTTRACKER_DB_PWORD'),
+        'HOST': os.environ.get('TREATMENTTRACKER_DB_HOST'),
+        'PORT': '5432',
     }
 }
 
@@ -137,19 +137,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 ################# S3 as STATIC FILES storage #################
-# AWS_STATIC = 'static'
-# AWS_ACCESS_KEY_ID = os.environ.get('GM_AWS_ACCESS_KEY_ID')
-# AWS_SECRET_ACCESS_KEY = os.environ.get('GM_AWS_SECRET_ACCESS_KEY')
-# AWS_STORAGE_BUCKET_NAME = 'treatmenttracker-static'
+AWS_STATIC = 'static'
+AWS_ACCESS_KEY_ID = os.environ.get('GM_AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('GM_AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = os.environ.get('TREATMENTTRACKER_AWS_STORAGE_BUCKET_NAME')
 
-# AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-# AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400',}
-
-# ################# WHERE STATIC FILES GO #################
-# STATICFILES_DIRS = [ os.path.join(BASE_DIR, 'treatmenttracker/static'), ]
-# STATIC_URL = 'https://s3.amazonaws.com/treatmenttracker-static/static/'
-# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-# DEFAULT_FILE_STORAGE = 'treatmenttracker.storage_backends.MediaStorage'
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400',}
+AWS_DEFAULT_ACL = None
+################# WHERE STATIC FILES GO #################
+STATICFILES_DIRS = [ os.path.join(BASE_DIR, 'treatmenttracker/static'), ]
+STATIC_URL = 'https://s3.amazonaws.com/treatmenttracker/static/'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+DEFAULT_FILE_STORAGE = 'treatmenttracker.storage_backends.MediaStorage'
 
 
 
@@ -157,7 +157,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 
-STATIC_ROOT = os.path .join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATIC_URL = '/staticfiles/'
 
