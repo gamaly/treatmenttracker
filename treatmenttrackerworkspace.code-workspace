@@ -4,5 +4,7 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"python.pythonPath": "C:\\Users\\gamal\\.virtualenvs\\treatmenttracker-Mie70dm_\\Scripts\\python.exe"
+	}
 }

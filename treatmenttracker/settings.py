@@ -27,7 +27,7 @@ SECRET_KEY = 't$9ez62o4&0r&#@y4swyd(gcgmcjl-o4=e)t#ss$4x$gje2ytl'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['treatmenttracker-dev.herokuapp.com']
+ALLOWED_HOSTS = ['treatmenttracker-dev.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bootstrap4',
+    'storages',
     'accounts',
     'myaadata',
 ]
@@ -135,12 +136,31 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-STATIC_ROOT = os.path .join(BASE_DIR, 'staticfiles')
+################# S3 as STATIC FILES storage #################
+# AWS_STATIC = 'static'
+# AWS_ACCESS_KEY_ID = os.environ.get('GM_AWS_ACCESS_KEY_ID')
+# AWS_SECRET_ACCESS_KEY = os.environ.get('GM_AWS_SECRET_ACCESS_KEY')
+# AWS_STORAGE_BUCKET_NAME = 'treatmenttracker-static'
 
-STATIC_URL = '/static/'
+# AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+# AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400',}
 
-STATICFILES_DIRS = [os .path .join(BASE_DIR, 'static')]
+# ################# WHERE STATIC FILES GO #################
+# STATICFILES_DIRS = [ os.path.join(BASE_DIR, 'treatmenttracker/static'), ]
+# STATIC_URL = 'https://s3.amazonaws.com/treatmenttracker-static/static/'
+# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# DEFAULT_FILE_STORAGE = 'treatmenttracker.storage_backends.MediaStorage'
 
 
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.11/howto/static-files/
+
+
+STATIC_ROOT = os.path .join(BASE_DIR, 'static')
+
+STATIC_URL = '/staticfiles/'
+
+STATICFILES_DIRS = [os .path .join(BASE_DIR, 'staticfiles')]
 
 LOGIN_REDIRECT_URL = 'home'
