@@ -17,11 +17,18 @@ SECRET_KEY = 't$9ez62o4&0r&#@y4swyd(gcgmcjl-o4=e)t#ss$4x$gje2ytl'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
-CSRF_COOKIE_HTTPONLY = True
-SECURE_SSL_REDIRECT = True
-SECURE_CONTENT_TYPE_NOSNIFF = True
+# SESSION_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
+# CSRF_COOKIE_HTTPONLY = True
+# SECURE_SSL_REDIRECT = True
+# SECURE_CONTENT_TYPE_NOSNIFF = True
+
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False
+CSRF_COOKIE_HTTPONLY = False
+SECURE_SSL_REDIRECT = False
+SECURE_CONTENT_TYPE_NOSNIFF = False
+
 
 ALLOWED_HOSTS = ['treatmenttracker-dev.herokuapp.com', '127.0.0.1', 'www.treatmenttracker.io', 'treatmenttracker.io', 'treatmenttracker-prod.herokuapp.com']
 
