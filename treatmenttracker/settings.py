@@ -164,3 +164,4 @@ STATIC_URL = '/staticfiles/'
 STATICFILES_DIRS = [os .path .join(BASE_DIR, 'staticfiles')]
 
 LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
