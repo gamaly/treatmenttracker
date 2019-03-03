@@ -1,44 +1,48 @@
-{% extends 'base.html' %}
+{% extends 'layouts/base.html' %}
+
+{% block header %}
+    <h1>Test results</h1>
+{% endblock header %}
 
 {% block content %}
-<a href="{% url 'cbc_new' %}" class="btn btn-primary">Add Data</a>
-<table class="table">
+<a href="{% url 'cbc_new' %}" class="tt-button">Add Data</a>
+<br><br>
+<table class="tt-table">
     <thead>
-      <tr>
-        <th scope="col">Date</th>
-        <th scope="col">HCT (%)</th>
-        <th scope="col">Hgb (g/dL)</th>
-        <th scope="col">MCV (fL)</th>
-        <th scope="col">NRBC (X/100WC)</th>
-        <th scope="col">Platelets (K/uL)</th>
-        <th scope="col">RBCs (M/uL)</th>
-        <th scope="col">RDW, RBC (%)</th>
-        <th scrope="col">WBC (K/uL)</th>
-        <th scrope="col">Manage</th>
-
-      </tr>
+        <tr>
+            <th scope="col" class="tt-column-date">Date</th>
+            <th scope="col" class="tt-num">HCT <span class="tt-unit">(%)</span></th>
+            <th scope="col" class="tt-num">Hgb <span class="tt-unit">(g/dL)</span></th>
+            <th scope="col" class="tt-num">MCV <span class="tt-unit">(fL)</span></th>
+            <th scope="col" class="tt-num">NRBC <span class="tt-unit">(X/100WC)</span></th>
+            <th scope="col" class="tt-num">Platelets <span class="tt-unit">(K/uL)</span></th>
+            <th scope="col" class="tt-num">RBCs <span class="tt-unit">(M/uL)</span></th>
+            <th scope="col" class="tt-num">RDW, RBC <span class="tt-unit">(%)</span></th>
+            <th scope="col" class="tt-num">WBC <span class="tt-unit">(K/uL)</span></th>
+            <th scope="col" class="tt-num"></th>
+        </tr>
     </thead>
     <tbody>
-{% for CBCresults in object_list|dictsort:"date"  %}
-      <tr>        
-        <td>{{ CBCresults.date }}</td>
-        <td>{{ CBCresults.HCT_percent }}</td>
-        <td>{{ CBCresults.Hgb }}</td>
-        <td>{{ CBCresults.MCV }}</td>
-        <td>{{ CBCresults.NRBC }}</td>
-        <td>{{ CBCresults.Platelets }}</td>
-        <td>{{ CBCresults.RBCs }}</td>
-        <td>{{ CBCresults.RDW_RBC_percent }}</td>
-        <td>{{ CBCresults.WBC }}</td>
-        <td><a class="btn btn-warning m-1" href="{% url 'cbc_edit' CBCresults.pk %}">Edit</a><a class="btn btn-danger m-1" href="{% url 'cbc_delete' CBCresults.pk %}">Delete</a></td>
-      </tr>
-      {% endfor %}
-
+        {% for CBCresults in object_list|dictsort:"date"  %}
+            <tr>        
+                <td>{{ CBCresults.date }}</td>
+                <td class="tt-num">{{ CBCresults.HCT_percent }}</td>
+                <td class="tt-num">{{ CBCresults.Hgb }}</td>
+                <td class="tt-num">{{ CBCresults.MCV }}</td>
+                <td class="tt-num">{{ CBCresults.NRBC }}</td>
+                <td class="tt-num">{{ CBCresults.Platelets }}</td>
+                <td class="tt-num">{{ CBCresults.RBCs }}</td>
+                <td class="tt-num">{{ CBCresults.RDW_RBC_percent }}</td>
+                <td class="tt-num">{{ CBCresults.WBC }}</td>
+                <td>
+                    <a  href="{% url 'cbc_edit' CBCresults.pk %}">Edit</a>
+                    <!-- Move to edit form -->
+                    <!-- <a class="btn btn-danger m-1" href="{% url 'cbc_delete' CBCresults.pk %}">Delete</a> -->
+                </td>
+            </tr>
+        {% endfor %}
     </tbody>
-  </table>
-
-<p></p>
-
+</table>
 
 
 {% endblock content %}

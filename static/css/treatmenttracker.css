@@ -1,0 +1,191 @@
+body {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    min-height: 100vh;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+h1 {
+    font-weight: bold;
+    font-size: 32px;
+}
+
+a {
+    color: #6e66d3;
+}
+
+
+.tt-button {
+    align-items: center;
+    background-color: #a163a6;
+    background-image: linear-gradient(-65deg, #6e66d3, #a163a6);
+    border: none;
+    border-radius: 5px;
+    color: #FFF;
+    cursor: pointer;
+    display: inline-flex;
+    height: 40px;
+    justify-content: center;
+    padding: 8px 24px;
+    transition: all 0.1s;
+}
+
+.tt-button.-small {
+    height: 30px;
+    padding: 3px 16px;
+}
+
+.tt-button.-big {
+    font-size: 20px;
+    height: 50px;
+    padding: 8px 32px;
+}
+
+.tt-button:hover {
+    box-shadow: 0 2px 5px rgba(161, 99, 166, 0.5);
+    color: #FFF;
+    text-decoration: none;
+}
+
+.tt-button.-secondary {
+    background: transparent;
+    border: 1px solid #6e66d3;
+    color: #6e66d3;
+}
+
+.tt-button.-secondary:hover {
+    box-shadow: 0 0 5px rgba(161, 99, 166, 0.35);
+}
+
+.tt-table {
+
+}
+
+.tt-table thead {
+    border-bottom: 1px solid #CCC;
+}
+
+.tt-table td, .tt-table th {
+    padding: 5px 8px;
+}
+
+.tt-table th {
+    vertical-align: top;
+}
+
+.tt-column-date {
+    width: 8em;
+}
+
+.tt-unit {
+    color: #888;
+    font-weight: normal;
+}
+
+th.tt-num {
+    text-align: right;
+}
+
+td.tt-num {
+    font-feature-settings: "tnum";
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+}
+
+.tt {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.tt-authenticated {
+    padding-left: 260px;
+}
+
+.tt-authenticated-sidebar {
+    background: #EEE;
+    background: linear-gradient(-10deg, #ff8c6f 20.05vw, #ff6773);
+    bottom: 0;
+    left: 0;
+    padding: 40px 40px;
+    position: fixed;
+    top: 0;
+    width: 260px;
+}
+
+.tt-authenticated-sidebar .tt-logo {
+    display: block;
+    margin: 6px 0 40px;
+}
+
+.tt-authenticated-primary-nav-item,.tt-authenticated-primary-nav-item:hover {
+    color: #FFF;
+    display: block;
+    font-size: 16px;
+    margin: 20px 0;
+}
+
+.tt-page-header {
+    align-items: center;
+    display: flex;
+    padding: 40px 40px;
+    z-index: 1;
+}
+
+.tt-logo, .tt-logo:hover, .tt-logo:visited {
+    color: #FFF;
+    font-weight: bold;
+    font-size: 21px;
+    text-decoration: none;
+}
+
+.tt-auth {
+    margin-left: auto;
+}
+
+.tt-content-wrapper {
+    padding: 0 40px;
+}
+
+.tt-page-footer {
+    bottom: 0;
+    display: flex;
+    justify-content: flex-end;
+    left: 0;
+    margin-top: auto;
+    padding: 80px 40px 20px;
+    right: 0;
+}
+
+.tt-page-footer a {
+    color: #777;
+    display: inline-block;
+    margin-left: 30px;
+}
+
+.tt-unauthenticated.tt-home .tt-button.-secondary {
+    background: transparent;
+    border: 1px solid #FFF;
+    color: #FFF;
+}
+
+.tt-unauthenticated.tt-home .tt-button.-secondary:hover {
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.35);
+}
+
+
+.tt-hero {
+    background: linear-gradient(-10deg, #FFF, #FFF 20vw, #ff8c6f 20.05vw, #ff6773);
+    color: #FFF;
+    margin: -120px -40px 0;
+    padding: 200px 40px calc(20vw + 100px);
+    text-align: center;
+}
+
+.tt-hero h1 {
+    margin-bottom: 40px;
+}

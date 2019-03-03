@@ -1,0 +1,77 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Aplastic Anemia Data Portal</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet"> 
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/simple-sidebar.css' %}" rel="stylesheet">
+    <link href="{% static 'css/treatmenttracker.css' %}" rel="stylesheet">
+</head>
+
+<body>
+    <div class="tt {% if user.is_authenticated %}tt-authenticated{% else %}tt-unauthenticated{% endif %} {% block css_class %}{% endblock css_class %}">
+        {% if user.is_authenticated %}
+            {% include "layouts/nav.html" %}
+        {% endif %}
+
+        <header class="tt-page-header">
+            {% if not user.is_authenticated %}
+                <a class="tt-logo" href="/">Treatment Tracker</a>
+            {% else %}
+                {% block header %}{% endblock header %}
+            {% endif %}
+
+            <div class="tt-auth">
+                {% if user.is_authenticated %}
+                    <div class="nav-item dropdown" style="cursor: pointer;">
+                        <a class="nav-link dropdown-toggle PoppinsHeader" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Welcome, {{ user.first_name }}</a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">My Account</a>
+                            <a class="dropdown-item" href="#">About</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                        </div>
+                    </div>
+                {%else%}
+                    <a href="{% url 'login' %}" class="tt-button -secondary">Login</a>
+                {% endif %}
+            </div>
+        </header>
+
+        <div class="tt-content-wrapper">
+            {% block content %}
+
+            {% endblock content %}
+        </div>
+
+        <footer class="tt-page-footer">
+            <a href="#">Terms</a>
+            <a href="#">Privacy Policy</a>
+        </footer>
+    </div>
+
+  </div>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static 'jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+  <!-- Menu Toggle Script -->
+  <script>
+
+  </script>
+
+</body>
+</html>

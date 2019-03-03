@@ -1,13 +1,17 @@
-{% extends 'base.html' %}
-{% load bootstrap4 %} 
+{% extends 'layouts/base.html' %}
+{% load bootstrap4 %}
+
+{% block header %}
+    <h1>Add CBC Results</h1>
+{% endblock %}
+
 {% block content %}
 <div class="container">
-    <h1>Add CBC Results</h1>
-<form action="" method="post" class="form">
-    {% csrf_token %}
+	<form action="" method="post" class="form">
+    	{% csrf_token %}
         {% bootstrap_form form %}
 
         <input type ="submit" value ="Save" class="btn btn-primary"/>
-</form >
+	</form>
 </div>
 {% endblock %}

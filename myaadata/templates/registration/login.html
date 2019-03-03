@@ -1,5 +1,4 @@
-<!-- templates/registration/login.html -->
-{% extends 'base.html' %}
+{% extends 'layouts/base.html' %}
 {% block title %}<title>Login</title>{% endblock %}
 {%load static%}
 
@@ -28,7 +27,7 @@
     {% else %}
     <div class="container p-4 mt-4" style="text-align:center; max-width: 575.98px">
         <br>
-        <h4 style="color:black">Log in or Create an Account.</h4><br>
+        <h4 style="color:black">Log in</h4><br>
             <form method="post">
                 {% csrf_token %}
                 
@@ -38,7 +37,7 @@
                 
 
                 <a class="col-6" href="{% url 'password_reset' %}">Forgot password?</a>
-                <button class="btn btn-primary grow shadow" type="submit">Login</button>
+                <button class="tt-button" type="submit">Login</button>
                 
             </div>
             </form></div>
