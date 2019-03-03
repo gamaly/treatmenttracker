@@ -5,3 +5,4 @@ from .models import CBCresults, WBCdifferential
 admin.site.register(CBCresults)
 admin.site.register(WBCdifferential)
 
+
